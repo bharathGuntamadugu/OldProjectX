@@ -1,0 +1,21 @@
+@(user: securesocial.core.Identity)(implicit request: RequestHeader)
+@import securesocial.core.IdentityProvider
+<html>
+<body>
+<p>Welcome @user.firstName,</p>
+
+<p>
+    Your new account is ready.
+    Click <a href="@securesocial.core.providers.utils.RoutesHelper.login.absoluteURL(IdentityProvider.sslEnabled)">here</a> to log in</p>
+
+    Once you successfully <b>Log In</b> for the first time, fill following sections in personal information:
+    <ul>
+        <li>Dealer Code</li>
+        <li>Security question for password recovery in-case of lost</li>
+    </ul>
+<br><br>
+<b style = "color:red"> Its an Automatic mail, please don't reply</b><br>
+Thanks & Regards,
+AutoManage Team
+</body>
+</html>

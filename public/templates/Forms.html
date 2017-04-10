@@ -1,0 +1,134 @@
+<div class="row">
+    <div class = "col-sm-3 col-md-2 sidebar leftSideBar">
+        <div class="col-md-10">
+            <ul class="nav nav-sidebar">
+                <li><a href="" class = "active" ng-click="showHide(1)"><h5>Customer Form</h5></a></li>
+                <li><a href="" ng-click="showHide(2)"><h5>Vehicle Form</h5></a></li>
+                <li><a href="" ng-click="showHide(3)"><h5>All Forms</h5></a></li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <div class="or-spacer-vertical right">
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div ng-show="cusForm" class="customerForm">
+            <form ng-submit="customerDetailssubmit()" name="custForm" novalidate>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6 block">
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="firstName" name="firstName">First Name</span>
+                                <input type="text" name="firstNameInp" class="form-control" placeholder="First Name" ng-model="custForm.firstNameInput" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.firstNameInp.$dirty && custForm.firstNameInp.$invalid"
+                                      data-toggle="tooltip" data-placement="right" title="Required field">
+                                    <span ng-show="custForm.firstNameInp.$error.required" class="glyphicon glyphicon-remove-circle"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="lastName" name="lastName">Last Name</span>
+                                <input type="text" name="lastNameInp" class="form-control" placeholder="Last Name" ng-model="custForm.lastNameInput" required>
+                                 <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.lastNameInp.$dirty && custForm.lastNameInp.$invalid"
+                                       data-toggle="tooltip" data-placement="right" title="Required field">
+                                    <span ng-show="custForm.lastNameInp.$error.required" class="glyphicon glyphicon-remove-circle"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="middleName" name="middleName">Middle Name</span>
+                                <input type="text" name="middleNameInp" class="form-control" placeholder="Middle Name" ng-model="custForm.middleNameInput">
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="address" name="address">Address</span>
+                                <input type="text" name="addressInp" class="form-control" placeholder="Address" ng-model="custForm.addressInput" required>
+                                 <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.addressInp.$dirty && custForm.addressInp.$invalid"
+                                       data-toggle="tooltip" data-placement="right" title="Required field">
+                                    <span ng-show="custForm.addressInp.$error.required" class="glyphicon glyphicon-remove-circle"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="city" name="city">City</span>
+                                <input type="text" name="cityInp"class="form-control" placeholder="City" ng-model="custForm.cityInput" required>
+                                 <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.cityInp.$dirty && custForm.cityInp.$invalid"
+                                       data-toggle="tooltip" data-placement="right" title="Required field">
+                                    <span ng-show="custForm.cityInp.$error.required" class="glyphicon glyphicon-remove-circle"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="state" name="state">State</span>
+                                <input type="text" name="stateInp" class="form-control" placeholder="State" ng-model="custForm.stateInput" required>
+                                 <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.stateInp.$error.required && custForm.stateInp.$dirty"
+                                       data-toggle="tooltip" data-placement="right" title="Required field">
+                                    <span ng-show="custForm.stateInp.$error.required" class="glyphicon glyphicon-remove-circle"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="zipCode" name="zipCode">Zipcode</span>
+                                <input type="text" name="zipCodeInp" class="form-control" placeholder="Zipcode" ng-model="custForm.zipCodeInput" ng-pattern="/^(\d{5}-\d{4}|\d{5})$/" required>
+                                 <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.zipCodeInp.$dirty && custForm.zipCodeInp.$invalid">
+                                    <span ng-show="custForm.zipCodeInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.zipCodeInp.$error.pattern" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid Zipcode"></span>
+                                </span>
+
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="phoneNum" name="phoneNum">Mobile Number</span>
+                                <input type="text" name="phoneNumInp"class="form-control" placeholder="Mobile Number" ng-model="custForm.phoneNumInput" ng-pattern="/^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.phoneNumInp.$dirty && custForm.phoneNumInp.$invalid">
+                                    <span ng-show="custForm.phoneNumInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.phoneNumInp.$error.pattern" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid Mobile Number"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="email" name="email">Email</span>
+                                <input type="email" name="emailInp" class="form-control" placeholder="Email" ng-model="custForm.emailInput" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.emailInp.$dirty && custForm.emailInp.$invalid" required>
+                                    <span ng-show="custForm.emailInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.emailInp.$error.email" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid Email"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 block">
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="dob" name="dob">Date of Birth</span>
+                                <input class="form-control" id="dobInput" name="dobInp" placeholder="Date of Birth" data-date-format="mm-dd-yyyy" data-date-viewmode="years" ng-model="custForm.dobInput" ng-pattern="/^([0-9]{2})-([0-9]{2})-([0-9]{4})$/" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.dobInp.$dirty && custForm.dobInp.$invalid" required>
+                                    <span ng-show="custForm.dobInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.dobInp.$error.pattern" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid date format"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="ssn" name="ssn">Social Security Number</span>
+                                <input type="text" name="ssnInp" class="form-control" placeholder="Social Security Number" ng-model="custForm.ssnInput" ng-pattern="/^(\d{9}|\d{3}-\d{2}-\d{4})$/" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.ssnInp.$dirty && custForm.ssnInp.$invalid" required>
+                                    <span ng-show="custForm.ssnInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.ssnInp.$error.pattern" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid SSN"></span>
+                                </span>
+                            </div>
+                            <div class="input-group inputBoxPad">
+                                <span class="input-group-addon" id="licenseNum" name="licenseNum">Driver's License Number</span>
+                                <input type="text" name="licenseNumInp" class="form-control" placeholder="Driver's License Number" ng-model="custForm.licenseNumInput" required>
+                                <span class="input-group-addon right-group-addon" style="color:red" ng-show="custForm.licenseNumInp.$dirty && custForm.licenseNumInp.$invalid" >
+                                    <span ng-show="custForm.licenseNumInp.$error.required" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Required field"></span>
+                                    <span ng-show="custForm.licenseNumInp.$error.pattern" class="glyphicon glyphicon-remove-circle" data-toggle="tooltip" data-placement="right" title="Invalid SSN"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row col-md-10">
+                        <input type="submit" class="btn btn-md btn-danger navbar-right" style="margin-left:6px" id="submit" name="submit">
+                        <input type="reset" class="btn btn-md btn-danger navbar-right" id="reset" name="reset">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div ng-show="vehForm" class="vehicleForm">
+        </div>
+        <div ng-show="allForm" class="allForms">
+            <a class="iframe group" href="/assets/thumbnails/devuda.pdf"><img src="/assets/thumbnails/demo1.jpg" style="width:304px;height:228px"></a>
+            <a class="iframe group" href="http://www.irs.gov/pub/irs-pdf/fw4.pdf">PDF2</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+@(startForm:Form[String])(implicit request: RequestHeader)
+@import helper._
+@import securesocial.core.IdentityProvider
+@implicitFieldConstructor = @{ FieldConstructor(securesocial.views.html.inputFieldConstructor.f) }
+
+@main("Getting Started") {
+@request.flash.get("error").map { msg =>
+<div class="alertError">
+    @Messages(msg)
+</div>
+}
+<div class="login_box" style="height:45%">
+    <p style="background-color:#F32D27;text-align:center;border:20px;padding:30px;margin-bottom:10px;font-size:24px;">
+        Create Account</p>
+
+    <div class="login_control">
+        <form action="@securesocial.core.providers.utils.RoutesHelper.handleStartSignUp().absoluteURL(IdentityProvider.sslEnabled)"
+              class="form-horizontal"
+              autocomplete="off"
+              method="post"
+                >
+            <fieldset>
+                <h3 class="label"> Email Address </h3> <span class="requiredElement"> required</span>
+                <input type="text" name="email" id="email" class="form-control">
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-lg btn-danger">@Messages("securesocial.signup.createAccount")
+                    </button>
+                    <a class="btn btn-sm btn-outline-inverse"
+                       href="@securesocial.core.providers.utils.RoutesHelper.login()">@Messages("securesocial.signup.cancel")</a>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <br>
+
+    <p class="requiredElement" style="font-size:14px;margin:0 auto;" align="center">
+        <span class="glyphicon glyphicon-asterisk"></span> After creation of account, Check your email <span
+            class="glyphicon glyphicon-envelope"></span> for Sign Up Instructions
+    </p>
+</div>
+}

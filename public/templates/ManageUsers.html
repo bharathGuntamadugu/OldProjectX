@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li ng-click="showDiv('activeUsers')"><a><h5>Active Users</h5></a></li>
+            <li ng-click="showDiv('inviteNewUser')"><a><h5>Invite User</h5></a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9 col-md-9 middleContent" ng-show="showActiveUsers">
+        <button class = "btn btn-xs btn-info" ng-click = "clearFilters();">Clear Filter <span class = "glyphicon glyphicon-filter"></span></button>
+        <a class = "btn btn-xs btn-info" id = "export2scv">Export</a>
+        <label class = "label label-lg label-default" style="padding:5px;">Records #<span class ="badge">{{activeUsersFiltered.length}}</span></label>
+        <button class="btn btn-xs btn-danger" type="button" style = "float:right;margin-left:10px" ng-click = "filterBy('status','Invite Expired')">
+            Invite Expired <span class="badge">{{inviteExpiredUserCount}}</span>
+        </button>
+        <button class="btn btn-xs btn-warning" type="button" style = "float:right;margin-left:10px" ng-click = "filterBy('status','Invited')">
+            Invited <span class="badge">{{invitedUserCount}}</span>
+        </button>
+        <button class="btn btn-xs btn-success" type="button" style = "float:right;margin-left:10px" ng-click = "filterBy('status','Registered')">
+            Registered <span class="badge">{{registeredUserCount}}</span>
+        </button>
+        <hr/>
+        <table class="table table-bordered table-responsive table-striped table-hover activeUsersTable"
+               ng-init="sortPredicate='firstName'; sortDirection=false;">
+            <thead>
+            <tr class ="activeUsersFilters">
+                <th><input type="text" ng-model = "byOrgName" ng-change="filterBy('orgName',byOrgName)" placeholder="Org Name" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byDealerCode" ng-change="filterBy('dealerCode',byDealerCode)" placeholder="Dealer Code" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byRole" ng-change="filterBy('role',byRole)" placeholder="Role" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byEmail" ng-change="filterBy('email',byEmail)" placeholder="Email" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byFirstName" ng-change="filterBy('firstName',byFirstName)" placeholder="First Name" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byLastName" ng-change="filterBy('lastName',byLastName)" placeholder="Last Name" class = "form-control"/></th>
+                <th><input type="text" ng-model = "byStatus" ng-change="filterBy('status',byStatus)" placeholder="Status" class = "form-control"/></th>
+
+            </tr>
+            <tr class="activeUsersHead">
+                <th>Organization</th>
+                <th>Dealer Code</th>
+                <th ng-click="sortPredicate='role'; sortDirection=!sortDirection;sortColumn(sortPredicate,sortDirection);">
+                    Role<img ng-src="{{'role' | sortDirectionIcon:sortPredicate:sortDirection}}"></th>
+                <th ng-click="sortPredicate='email'; sortDirection=!sortDirection;sortColumn(sortPredicate,sortDirection);">
+                    Email<img ng-src="{{'email' | sortDirectionIcon:sortPredicate:sortDirection}}"></th>
+                <th ng-click="sortPredicate='firstName'; sortDirection=!sortDirection;sortColumn(sortPredicate,sortDirection);">
+                    First Name<img ng-src="{{'firstName' | sortDirectionIcon:sortPredicate:sortDirection}}"></th>
+                <th ng-click="sortPredicate='lastName'; sortDirection=!sortDirection;sortColumn(sortPredicate,sortDirection);">
+                    Last Name<img ng-src="{{'lastName' | sortDirectionIcon:sortPredicate:sortDirection}}"></th>
+                <th ng-click="sortPredicate='status'; sortDirection=!sortDirection;sortColumn(sortPredicate,sortDirection);">
+                    Status<img ng-src="{{'status' | sortDirectionIcon:sortPredicate:sortDirection}}"></th>
+            </tr>
+            </thead>
+            <tbody class="activeUsersBody">
+            <tr ng-repeat="user in activeUsersFiltered">
+                <td>{{user.orgName}}</td>
+                <td>{{user.dealerCode}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.status}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-9 col-md-8 middleContent" ng-show="showInviteNewUser">
+        <div class="jumbotron" style="margin:0 auto;padding:0;background-color:white;">
+            <h3> Invite New User
+                <img src = "assets/images/add-user.png" class = "img-circle" style="height:50px;width:50px"/>
+            </h3>
+        </div>
+        <div style="float:left" class = "col-sm-6">
+            <form novalidate name="inviteForm">
+                <p> Email Address
+                        <span ng-show="inviteForm.email.$dirty && inviteForm.email.$invalid" class ="requiredElement">
+                            <span class = "requiredElement"ng-show="inviteForm.email.$error.required"> required</span>
+                        </span></p>
+                <input type="email" name="email" class="form-control" ng-model="email" required style="width:250px">
+
+                <p>Role</p>
+                <label ng-repeat="userType in userTypes" for="{{userType}}" style="margin:2px;" class = "btn btn-sm btn-danger">
+                    <input type="radio" id="{{userType}}" name="userType" ng-click="userTypeSel('{{userType}}')">
+                    {{userType}}
+                </label>
+                <br><br>
+                <button type="submit" ng-disabled="inviteForm.email.$dirty && inviteForm.email.$invalid"
+                        class="btn btn-lg btn-primary" ng-click="inviteUser()">Invite User
+                </button>
+            </form>
+        </div>
+        <div class="alert formOutput" style = "float:left" role = "alert" class = "col-sm-6"></div>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    /*font-family: 'Raleway', sans-serif;
+    color : #AAAAAA;*/
+}
+html, body {
+    height: 100%;
+}
+
+.mainContainer{
+    margin-top : 30px;
+    margin-bottom: 10px;
+}
+
+.page-wrap {
+    min-height:75%;
+    /* equal to footer height */
+
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+.site-footer, .page-wrap:after {
+    height: 70px;
+}
+
+
+.right-group-addon{
+    min-width:10px
+}
+
+
+/* settings Page CSS */
+
+.inputBoxPad{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 0px;
+}
+.inputLabel {
+    color: #2574A9;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form-control-blue {
+    width:250px;
+    border:none;
+    border-bottom: 1px solid #4183D7;
+
+}
+.activeUsersTable{
+    width:100%;
+    margin:0 auto;
+
+    }
+.activeUsersHead {
+    background-color:#4183D7;
+}
+.activeUsersHead th {
+    margin:0 auto;
+    padding:0;
+    vertical-align:bottom;
+    text-align:left;
+    color:white;
+    font-size:12px;
+}
+
+.activeUsersBody tr td {
+     margin:0 auto;
+    padding:0;
+    vertical-align:bottom;
+    text-align:left;
+    font-size:12px;
+    word-wrap: break-word;
+}
+
+.activeUsersFilters th input{
+    margin:0 auto;
+    padding:0;
+    font-size:12px;
+    width:120px;
+}
+
+.requiredElement {
+        font-style: italic;
+        color:black;
+        font-size:10px;
+}
+
+.btn-strip-red {
+	background: -webkit-linear-gradient(left, white 96%, red 100%);
+	background: -moz-linear-gradient(left, white 96%, red 100%);
+	background: linear-gradient(to right, white 96%, red 100%);
+	background: -ms-linear-gradient(left, white 96%, red 100%);
+}
+
+.btn-strip-green {
+	background: -webkit-linear-gradient(left, white 96%, green 100%);
+	background: -moz-linear-gradient(left, white 96%, green 100%);
+	background: -ms-linear-gradient(left, white 96%, green 100%);
+	background: linear-gradient(left, white 96%, green 100%);
+}
+
+.navbar-default {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-brand {
+  color: #269cba;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-text {
+  color: #269cba;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #269cba;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #CF000F;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #496d96;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #496d96;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #496d96;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #269cba;
+}
+
+.navbar-default .navbar-link {
+  color: #269cba;
+}
+.navbar-default .navbar-link:hover {
+   color: #269cba;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #269cba;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #CF000F;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #496d96;
+  }
+}

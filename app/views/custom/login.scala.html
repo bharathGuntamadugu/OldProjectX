@@ -1,0 +1,43 @@
+@(loginForm: Form[(String,String)], errorMsg: Option[String] = None)(implicit request: RequestHeader, flash: Flash)
+
+@import helper._
+@import securesocial.core.IdentityProvider
+@import securesocial.core.providers.utils.RoutesHelper
+@extra_script = {
+<script>
+        @errorMsg.map { msg =>
+            var errorMessage = "@Messages(msg)";
+        }
+        @flash.get("errorMessage").map { msg =>
+            var errorMessage = "@msg";
+        }
+
+</script>
+}
+
+@extra_style = {
+}
+
+@main("Login", extra_style, extra_script) {
+<div class="login_box">
+    <div align="center">
+        <div><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="image-circle"/></div>
+        <h1>Hi Guest,</h1>
+    </div>
+    <div class="login_control">
+        <form action='@securesocial.core.providers.utils.RoutesHelper.authenticateByPost("userpass").absoluteURL(IdentityProvider.sslEnabled)'
+              class="login-element" autocomplete="off" method="POST">
+            <h3 class="label"> User Name </h3>
+            <input class="textInput userNameInput form-control" type="email" name="username"
+                   placeholder="Email Address"/>
+
+            <h3 class="label"> Password <span class ="glyphicon glyphicon-eye-close" style="color:black;float:right;"></span></h3>
+            <input class="textInput passwordInput form-control" type="password" name="password" placeholder="Password"/>
+            <input class="btn btn-danger btn-block" id="loginSubmit" type="submit" value="Log In"/>
+        </form>
+    </div>
+    <a href="/reset" class="forgotPassword">Forgot Password ?</a>
+    <a class="getStarted" href="/signup"> Create Account
+        <span class="glyphicon glyphicon-user"></span></a>
+</div>
+}

@@ -1,0 +1,67 @@
+<html ng-app="myApp">
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/paper-split.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/colorbox.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/datepicker.css">
+    <title>Auto Manage</title>
+</head>
+<body ng-controller="IndexController">
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/home"><img src="assets/images/logo.png" class="navbar-brand" style="width:150px;height:50px;padding:0;"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active: $location.path() == '/home'}"><a href="#/home"><span
+                        class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li ng-class="{active: $location.path() == '/forms'}"><a href="#/forms">
+                    <span class="glyphicon glyphicon-th-list"></span> Forms</a></li>
+                <li ng-class="{active: $location.path() == '/manageUsers'}" ng-show="showManageUsers"><a
+                        href="#/manageUsers">
+                    <span class="glyphicon glyphicon-user"></span> Manage Users</a></li>
+                <li ng-class="{active: $location.path() == '/settings'}"><a href="#/settings">
+                    <span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                <li ng-class="{active: $location.path() == '/logout'}"><a href="/logout"><span
+                        class='glyphicon glyphicon-log-out'></span> Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="page-wrap">
+    <div class="mainContainer" id="content">
+        <div ng-view style="margin-top:50px;"></div>
+    </div>
+    <script src="assets/lib/jquery-1.11.2.min.js"></script>
+    <script src="assets/lib/jquery.colorbox-min.js"></script>
+    <script src="assets/lib/bootstrap-datepicker.js"></script>
+    <script src="assets/lib/bootstrap.js"></script>
+    <script src="assets/lib/angular.js"></script>
+    <script src="assets/lib/angular-route.min.js"></script>
+    <script src="assets/js/AppFilters.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/IndexController.js"></script>
+    <script src="assets/js/FormsController.js"></script>
+    <script src="assets/js/SettingsController.js"></script>
+    <script src="assets/js/ManageUsersController.js"></script>
+</div>
+<footer class="site-footer">
+    <hr style="height:1px;border:none;color:#333;background-color:#C0C0C0;padding:0;margin:0"/>
+    <p style="text-align: center;margin-top:10px"> © 2015. All Rights Reserved - AutoManage</p>
+
+    <p style="text-align:center;margin-top:-10px">Developed by: <a href="mailto:bguntam@ncsu.edu"> Bhargav </a> & <a
+            href="mailto:naveen.teja.j.n.v@gmail.com">Naveen Teja</a></p>
+</footer>
+
+</body>
+
+</html>

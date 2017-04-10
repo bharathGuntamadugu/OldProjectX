@@ -1,0 +1,95 @@
+<div class = "row">
+    <div class = "col-sm-3 col-md-2 sidebar">
+        <div class="col-md-10">
+            <ul class="nav nav-sidebar">
+                <li ng-click="showDiv('accountInfo')"><a href=""><h5>Account</h5></a></li>
+                <li ng-click="showDiv('passwordChange')"><a href=""><h5>Password Change</h5></a></li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <div class="or-spacer-vertical right">
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="showAccountInfo">
+        <div class="col-sm-9 col-md-10">
+            <div class="jumbotron" style="margin:0 auto;padding:0;background-color:white;">
+                <h3> My Account
+                    <img src = "assets/images/user-info.png" class = "img-circle" style="height:50px;width:50px"/>
+                </h3>
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Organization Name</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon1"
+                       value = "{{accountInfo.orgName}}" disabled = "disabled">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">Dealer Code</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon2"
+                       value = "{{accountInfo.dealerCode}}" disabled = "disabled">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Role</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon3"
+                       value = "{{accountInfo.role}}" disabled = "disabled">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4">Email</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon4"
+                       value = "{{accountInfo.email}}" disabled = "disabled">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon5">First Name</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon5"
+                       value = "{{accountInfo.firstName}}" disabled = "disabled">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon6">Last Name</span>
+                <input type="text" class="form-control" style = "width:250px;margin-bottom:5px;" aria-describedby="basic-addon6"
+                       value = "{{accountInfo.lastName}}" disabled = "disabled">
+            </div>
+        </div>
+    </div>
+    <div ng-show="showPasswordChange">
+        <div class="col-sm-9 col-md-10">
+            <div class="jumbotron" style="margin:0 auto;padding:0;background-color:white;">
+                <h3> Change Password
+                    <img src = "assets/images/password-change.png" class = "img-circle" style="height:50px;width:50px"/>
+                </h3>
+            </div>
+            <form name="cpForm" novalidate>
+                <fieldset>
+                    <div class="col-md-5">
+                        <p>Current Password <span class="requiredElement"
+                                                                      ng-show="cpForm.currentPassword.$dirty && cpForm.currentPassword.$invalid"> required</span>
+                        </p>
+                        <input type="password" id="currentPassword" name="currentPassword"
+                               class="form-control" required ng-model = "currentPassword" style="width:250px;">
+
+                        <p>New Password <span class="requiredElement"
+                                                                  ng-show="cpForm.newPassword.password1.$dirty && cpForm.newPassword.password1.$invalid"> required</span>
+                        </p>
+                        <input type="password" id="newPassword_password1" name="newPassword.password1"
+                               class="form-control" style="width:250px;" required ng-model = "newPassword1">
+
+                        <p>Confirm Password <span class="requiredElement"
+                                                                      ng-show="cpForm.newPassword.password2.$dirty && cpForm.newPassword.password2.$invalid"> required</span>
+                        </p>
+                        <input type="password" id="newPassword_password2" name="newPassword.password2"
+                               class="form-control" style="width:250px;" required ng-model = "newPassword2">
+                        <br>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-lg btn-primary" ng-click = "changePassword();">
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
